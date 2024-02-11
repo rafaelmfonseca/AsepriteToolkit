@@ -20,11 +20,10 @@ jobs:
       run: dotnet restore
 
     - name: Publish
-      run: dotnet publish --runtime win-x64 -c Release --self-contained true /p:PublishSingleFile=true
-      working-directory: ./src/AsepriteToolkit/
+      run: dotnet publish ./src/AsepriteToolkit/ -o ./artifacts --runtime win-x64 -c Release /p:DebugType=None /p:DebugSymbols=false
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: publish
-        path: ./publish
+        path: ./publish/
