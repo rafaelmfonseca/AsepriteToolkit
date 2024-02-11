@@ -1,4 +1,4 @@
-﻿using AsepriteToolkit.Providers;
+using AsepriteToolkit.Providers;
 
 try
 {
@@ -12,6 +12,8 @@ try
     aseprite.ClearPinnedFiles();
 
     aseprite.Save();
+
+    aseprite.Run();
 }
 catch (Exception e)
 {

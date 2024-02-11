@@ -1,4 +1,5 @@
-﻿using System.Text;
+using System.Diagnostics;
+using System.Text;
 using AsepriteToolkit.Common;
 using IniParser;
 using IniParser.Model;
@@ -41,6 +42,13 @@ public sealed class AsepriteProvider
     }
 
     public void ClearPinnedFiles() => _data.Sections.RemoveSection("PinnedFiles");
+
+    public void Run()
+    {
+        var path = ToolkitEnvironment.GetFilePath(ToolkitEnvironment.SpecialFile.AsepriteExecutable);
+
+        Process.Start(path);
+    }
 
     public void Save() => _parser.WriteFile(_path, _data, Encoding.UTF8);
 }
